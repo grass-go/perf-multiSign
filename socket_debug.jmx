@@ -16,7 +16,7 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="HOST" elementType="Argument">
             <stringProp name="Argument.name">HOST</stringProp>
-            <stringProp name="Argument.value">10.40.10.37</stringProp>
+            <stringProp name="Argument.value">101.201.66.150</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="PORT" elementType="Argument">
@@ -45,7 +45,7 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${__P(ThreadNum,&quot;2000&quot;)}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">10</stringProp>
         <stringProp name="ThreadGroup.ramp_time">20</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration">300</stringProp>
@@ -70,7 +70,7 @@
           <boolProp name="TLS">false</boolProp>
           <stringProp name="server">${HOST}</stringProp>
           <stringProp name="port">${PORT}</stringProp>
-          <stringProp name="path">/api/wallet/multi/socket?address=${account}&amp;start=0&amp;limit=100&amp;state=0&amp;netType=main_net&amp;isSign=false</stringProp>
+          <stringProp name="path">/api/wallet/multi/socket?address=TX74o6dWugAgdaMv8M39QP9YL5QRgfj32t&amp;start=0&amp;limit=100&amp;state=0&amp;netType=main_net&amp;isSign=false</stringProp>
           <stringProp name="connectTimeout">999999</stringProp>
           <stringProp name="readTimeout">180000</stringProp>
         </eu.luminis.jmeter.wssampler.OpenWebSocketSampler>
@@ -119,7 +119,7 @@
         <hashTree/>
         <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">true</boolProp>
-          <stringProp name="LoopController.loops">150</stringProp>
+          <stringProp name="LoopController.loops">60</stringProp>
         </LoopController>
         <hashTree>
           <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="WebSocket Single Read Sampler" enabled="true">
@@ -134,24 +134,18 @@
             <boolProp name="optional">false</boolProp>
           </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
           <hashTree>
-            <SizeAssertion guiclass="SizeAssertionGui" testclass="SizeAssertion" testname="大小断言" enabled="true">
-              <stringProp name="Assertion.test_field">SizeAssertion.response_network_size</stringProp>
-              <stringProp name="SizeAssertion.size">2000</stringProp>
-              <intProp name="SizeAssertion.operator">3</intProp>
-            </SizeAssertion>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+              <stringProp name="ConstantTimer.delay">2000</stringProp>
+            </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-            <stringProp name="ConstantTimer.delay">2000</stringProp>
-          </ConstantTimer>
-          <hashTree/>
         </hashTree>
         <eu.luminis.jmeter.wssampler.CloseWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.CloseWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.CloseWebSocketSampler" testname="WebSocket Close" enabled="true">
           <stringProp name="statusCode">1000</stringProp>
           <stringProp name="readTimeout">6000</stringProp>
         </eu.luminis.jmeter.wssampler.CloseWebSocketSampler>
         <hashTree/>
-        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -188,7 +182,7 @@
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="false">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
